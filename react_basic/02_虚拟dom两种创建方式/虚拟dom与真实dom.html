@@ -10,13 +10,19 @@
   <div id="test">
 
   </div>
+  <div id="demo">
+
+  </div>
   <script src="../js/react.development.js"></script>
   <script src="../js/react-dom.development.js"></script>
   <script src="../js/babel.min.js"></script>
 
   <script type="text/babel">
-    const VDOM = <h1>Hello,React</h1>
+    const VDOM = <h1 id="title"><span>Hello,React</span></h1>
     ReactDOM.render(VDOM,document.getElementById('test'))
+    console.log('虚拟DOM',VDOM)
+    console.log('真实DOM',document.getElementById('demo'))
+    debugger
   </script>
 </body>
 </html>
