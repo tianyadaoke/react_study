@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script src="../js/react.development.js"></script>
+  <script src="../js/react-dom.development.js"></script>
+  <script src="../js/babel.min.js"></script>
+  <script src="../js/prop-types.js"></script>
+  <script type="text/babel">
+    class Count extends React.Component {
+      constructor(props) {
+        console.log('Count constructor')
+        super(props)
+        this.state = { count: 0 }
+      }
+
+      add = () => {
+        const { count } = this.state
+        this.setState({ count: count + 1 })
+      }
+      kill = () => {
+        ReactDOM.unmountComponentAtNode(document.getElementById('app'))
+      }
+      force = () => {
+        this.forceUpdate()
+      }
+      componentWillMount() {
+        console.log('Count componentWillMount')
+      }
+      componentDidMount() {
+        console.log('Count componentDidMount')
+      }
+      componentWillUnmount() {
+        console.log('Count componentWillUnmount')
+      }
+      // 控制组件更新的阀门
+      shouldComponentUpdate() {
+        console.log('Count shouldComponentUpdate')
+        return true
+      }
+      componentWillUpdate() {
+        console.log('Count componentWillUpdate')
+      }
+      componentDidUpdate() {
+        console.log('Count componentDidUpdate')
+      }
+      render(h) {
+        console.log('Count render')
+        const { count } = this.state
+        return (
+          <div>
+            <h2>当前求和为: {count}</h2>
+            <button onClick={this.add}>点我+1</button>
+            <button onClick={this.kill}>卸载组件</button>
+            <button onClick={this.force}>不更改state强制更新</button>
+          </div>
+        )
+      }
+    }
+    class A extends React.Component {
+      state={carName:'奔驰'}
+      changeCar=()=>{
+        this.setState({carName:'奥迪'})
+      }
+      render(h) {
+        return (
+          <div>
+            <div>我是A组件</div>
+            <button onClick={this.changeCar}>换车</button>
+            <B carName={this.state.carName}/>
+          </div>
+        )
+      }
+    }
+    class B extends React.Component {
+      componentWillReceiveProps(){
+        console.log('B  componentWillReceiveProps')
+      }
+      render(h) {
+        return (
+          <div>
+            我是B组件接收到的车是：{this.props.carName}
+          </div>
+        )
+      }
+    }
+    
+    ReactDOM.render(<A />, document.getElementById('app'))
+
+  </script>
+</body>
+
+</html>
