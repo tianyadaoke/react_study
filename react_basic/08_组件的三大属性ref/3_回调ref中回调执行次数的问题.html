@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input{
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="test1"></div>
+
+  <script src="../js/react.development.js"></script>
+  <script src="../js/react-dom.development.js"></script>
+  <script src="../js/babel.min.js"></script>
+  <script src="../js/prop-types.js"></script>
+  <script type="text/babel">
+
+    class MyComponent extends React.Component {
+      state={isHot:false}
+      showInfo=()=>{
+        console.log(this.input.value)
+      }
+      changeWeather=()=>{
+        const {isHot}=this.state
+        this.setState({isHot:!isHot})
+      }
+      saveInput=c=>{
+        this.input=c
+        console.log('@',c)
+      }
+      render() {
+        const {isHot}=this.state
+        return (
+          <div>
+            {/*<input ref={c=>{this.input=c;console.log('@',c)}} type="text"/>*/}
+            <input ref={this.saveInput} type="text"/>
+            <button onClick={this.showInfo}>点我提示数据</button>
+            <h2>今天天气很{isHot?'炎热':'凉爽'}</h2>
+            <button onClick={this.changeWeather}>点我切换天气</button>
+          </div>
+        )
+      }
+    }
+
+
+    ReactDOM.render(<MyComponent />, document.getElementById('test1'))
+
+
+
+  </script>
+</body>
+
+</html>
