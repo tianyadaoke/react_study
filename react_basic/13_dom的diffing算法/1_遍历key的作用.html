@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script src="../js/react.development.js"></script>
+  <script src="../js/react-dom.development.js"></script>
+  <script src="../js/babel.min.js"></script>
+  <script src="../js/prop-types.js"></script>
+  <script type="text/babel">
+
+    class Person extends React.Component {
+      state = {
+        persons: [
+          { id: 1, name: '小张', age: 18 },
+          { id: 2, name: '小李', age: 28 },
+          { id: 3, name: '小王', age: 38 },
+        ]
+      }
+
+      add=()=>{
+        const {persons}=this.state
+        const p = {id:persons.length+1,name:'小非',age:20}
+        this.setState({persons:[p,...persons]})
+      }
+      render() {
+        return (
+          <div>
+            <h2>展 示人员信息</h2>
+            <button onClick={this.add}>添加一个小王</button>
+            <ul>
+              {this.state.persons.map((personObj, index) => {
+                return <li>{index}-----{personObj.name}----{personObj.age}</li>
+              })}
+            </ul>
+          </div>
+
+        )
+      }
+    }
+    ReactDOM.render(<Person />, document.getElementById('app'))
+  </script>
+</body>
+
+</html>
