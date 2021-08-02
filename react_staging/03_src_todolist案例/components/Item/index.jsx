@@ -26,7 +26,7 @@ export default class Item extends Component {
       <div>
         <li style={{backgroundColor:mouse? '#ddd':'white'}} onMouseLeave={this.handlerMouse(false)} onMouseEnter={this.handlerMouse(true)}>
           <label>
-            <input type="checkbox" defaultChecked={done} onChange={this.handlerCheck(id)}/>
+            <input type="checkbox" checked={done} onChange={this.handlerCheck(id)}/>
             <span>{name}</span>
             <button className="item-delete" style={{display:mouse?'block':'none'}} onClick={()=>{this.handlerDelete(id)}}>删除</button>
           </label>
