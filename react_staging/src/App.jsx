@@ -9,10 +9,11 @@ export default class App extends Component {
     this.setState({users})
   }
   render() {
+    const {users}=this.state
     return (
       <div>
         <Search saveUsers={this.saveUsers}/>
-        <List/>
+        <List users={users}/>
       </div>
     )
   }
