@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route,Switch,Redirect} from 'react-router-dom'
+import { Route,Switch } from 'react-router-dom'
 import Header from './components/Header'
 import MyNavLink from './components/MyNavLink'
 import About from './pages/About'
@@ -13,12 +13,11 @@ export default class App extends Component {
         <Header />
         {/* <NavLink to="/home" activeClassName="atguigu"><h2>Home</h2></NavLink>
           <NavLink to="/about" activeClassName="atguigu"><h2>About</h2></NavLink>   */}
-        <MyNavLink to="/about">...about...</MyNavLink>
-        <MyNavLink to="/home">...home...</MyNavLink>
+        <MyNavLink to="/atguigu/about">...about...</MyNavLink>
+        <MyNavLink to="/atguigu/home">...home...</MyNavLink>
         <Switch>
-          <Route  path="/about" component={About}></Route>
-          <Route  path="/home" component={Home}></Route>
-          <Redirect to="/about"/>
+          <Route path="/atguigu/about" component={About}></Route>
+          <Route path="/atguigu/home" component={Home}></Route>
         </Switch>
 
       </div>

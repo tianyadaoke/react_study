@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route,Switch,Redirect} from 'react-router-dom'
+import { Route,Switch } from 'react-router-dom'
 import Header from './components/Header'
 import MyNavLink from './components/MyNavLink'
 import About from './pages/About'
@@ -16,9 +16,8 @@ export default class App extends Component {
         <MyNavLink to="/about">...about...</MyNavLink>
         <MyNavLink to="/home">...home...</MyNavLink>
         <Switch>
-          <Route  path="/about" component={About}></Route>
-          <Route  path="/home" component={Home}></Route>
-          <Redirect to="/about"/>
+          <Route path="/about" component={About}></Route>
+          <Route path="/home" component={Home}></Route>
         </Switch>
 
       </div>
