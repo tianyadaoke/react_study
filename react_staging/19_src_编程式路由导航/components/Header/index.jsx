@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
-import Count from './components/Count'
 
-export default class App extends Component {
+export default class Header extends Component {
   render() {
     return (
       <div>
-          <Count/>
+        <h1>React Router Demo</h1>
       </div>
     )
   }
 }
- 

@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
-import Count from './components/Count'
 
-export default class App extends Component {
+export default class About extends Component {
   render() {
     return (
       <div>
-          <Count/>
+        <h3>我是About的内容</h3>
       </div>
     )
   }
 }
- 
