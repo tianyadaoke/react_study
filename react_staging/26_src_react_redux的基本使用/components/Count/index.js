@@ -1,38 +1,31 @@
 import React, { Component } from 'react'
-import store from '../../redux/store'
-import { createIncrementAction, createDecrementAction,createIncrementAsyncAction } from '../../redux/count_action'
+
 export default class Count extends Component {
   state = { myCar: 'x60' }
-  // componentDidMount(){
-  //   store.subscribe(()=>{
-  //     this.setState({})
-  //   })
-  // }
+
   increment = () => {
     const { value } = this.selectedNumber
-    store.dispatch(createIncrementAction(value * 1))
+    this.props.jia(value*1)
   }
   decrement = () => {
     const { value } = this.selectedNumber
-    store.dispatch(createDecrementAction(value * 1))
+    this.props.jian(value*1)
   }
   incrementOdd = () => {
     const { value } = this.selectedNumber
-    const sum = store.getState()
-    if (sum % 2 !== 0) {
-      store.dispatch(createIncrementAction(value * 1))
+    if(this.props.sum%2!==0){
+      this.props.jia(value*1)
     }
   }
   incrementAsync = () => {
     const { value } = this.selectedNumber
-    // setTimeout(() => {
-    store.dispatch(createIncrementAsyncAction(value * 1,500))
-      // }, 1000);
+    this.props.jiaAsync(value*1,1000)
   }
   render() {
+    console.log('ui组件收到的props是',this.props)
     return (
       <div>
-        <p>当前求和为: {store.getState()}</p>
+        <p>当前求和为: {this.props.sum}</p>
         <select ref={c => this.selectedNumber = c}>
           <option value="1">1</option>
           <option value="2">2</option>
